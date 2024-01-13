@@ -1,6 +1,64 @@
-nav{
-    display: flex;
+* {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
 }
-.marry{
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 200px;
+}
+
+.nav-title {
+    text-align: left;
+    font-size: 45px;
+    font-weight: 800;
+    position: relative;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    color: var(--dark-02, #474747);
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+    position: relative;
+}
+
+nav li {
+    list-style: none;
+    margin-right: 50px;
+}
+
+.marry {
     color: rgb(255, 145, 0);
+}
+
+.btn-primary {
+    background: #fd6e0a;
+    color: #fff;
+    border-radius: 5px;
+    cursor: grab;
+    border: none;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 15px 35px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #474747;
+}
+.header{
+    background-color: #fff;
+}
+.banner{
+    padding: 30px 30px 30px 150px ;
+    display: flex;
+    align-items: center;
+}
+.banner .profile-pic{
+    width: 500px;
 }
