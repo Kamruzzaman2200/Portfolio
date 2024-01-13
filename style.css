@@ -175,10 +175,12 @@ main section {
     display: flex;
     gap: 60px;
 }
-.re-item-ins{
+
+.re-item-ins {
     margin-bottom: 20px;
     margin-top: 0px;
 }
+
 .re-item-des,
 .re-item-ins {
     color: #757575;
@@ -198,10 +200,38 @@ main section {
     position: relative;
     margin-bottom: 10px;
 }
-.re-container hr{
-margin: 30px;
+
+.re-container hr {
+    margin: 30px;
 }
-.download-btn{
+
+.download-btn {
     text-align: center;
     margin-top: 50px;
+}
+
+footer {
+    margin-top: 50px;
+    display: flex;
+    background: #fff8f3;
+    width: 1600px;
+    height: 780px;
+    padding: 130px;
+    gap: 100px;
+}
+
+.footer-column {
+    width: 50%;
+
+}
+
+.contact input[type="text"],.contact input[type="email"],
+textarea {
+    display: block;
+    margin-bottom: 25px;
+    padding: 18px 35px;
+    color: #757575;
+    background: #ffffff;
+    border-radius: 5px;
+    border: 0;
 }
