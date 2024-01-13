@@ -170,3 +170,38 @@ main section {
     font-weight: 700;
     position: relative;
 }
+
+.re-container {
+    display: flex;
+    gap: 60px;
+}
+.re-item-ins{
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+.re-item-des,
+.re-item-ins {
+    color: #757575;
+    text-align: left;
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 400;
+    position: relative;
+    width: 511px;
+}
+
+.re-item-title {
+    color: #474747;
+    text-align: left;
+    font-size: 25px;
+    font-weight: 700;
+    position: relative;
+    margin-bottom: 10px;
+}
+.re-container hr{
+margin: 30px;
+}
+.download-btn{
+    text-align: center;
+    margin-top: 50px;
+}
