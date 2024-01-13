@@ -10,6 +10,22 @@ nav {
     margin: 0 200px;
 }
 
+.section-title {
+    color: #181818;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.section-des {
+    color: #757575;
+    text-align: center;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 400;
+    width: 827px;
+}
+
 .nav-title {
     text-align: left;
     font-size: 45px;
@@ -51,14 +67,70 @@ nav a {
     text-decoration: none;
     color: #474747;
 }
-.header{
+
+.header {
     background-color: #fff;
+    background-image: url('images/header_bg.png');
+    background-repeat: no-repeat;
+    background-position: bottom right;
 }
-.banner{
-    padding: 30px 30px 30px 150px ;
+
+.banner {
+    padding: 30px 30px 0px 150px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
-.banner .profile-pic{
+
+.banner-contant {
+    max-width: 500px;
+}
+
+.banner .profile-pic {
     width: 500px;
+}
+
+.banner-gr {
+    color: #474747;
+    font-size: 45px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.banner-marry {
+    font-size: 85px;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+.banner-des {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.about {
+    padding: 130px;
+    background: #fff8f3;
+    font-size: 85px;
+    font-weight: 700;
+    border-radius: 10px;
+    margin-top: 130px;
+    margin-bottom: 120px;
+}
+
+main {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+.about-ifo-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.about-info {
+    text-align: center;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
 }
