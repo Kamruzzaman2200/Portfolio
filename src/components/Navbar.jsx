@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { HiSparkles } from 'react-icons/hi';
 
@@ -39,58 +40,73 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled ? 'glass shadow-[0_4px_30px_rgba(0,0,0,0.06)] py-3' : 'bg-transparent py-5'
+    <motion.nav 
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`fixed top-4 left-0 right-0 z-[100] transition-all duration-500 mx-auto w-[95%] max-w-5xl rounded-[2rem] ${
+      scrolled 
+        ? 'glass border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)] py-3 px-6' 
+        : 'bg-transparent py-4 px-6 border border-transparent'
     }`}>
-      <div className="max-w-6xl mx-auto px-5">
-        <div className="flex items-center justify-between">
-          <a href="#home" onClick={(e) => handleClick(e, '#home')}
-            className="flex items-center gap-2 text-xl font-bold font-['Space_Grotesk']">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-              <HiSparkles className="text-white text-sm" />
-            </div>
-            <span className="gradient-text">Kamruzzaman</span>
-          </a>
-
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a key={link.name} href={link.href}
-                onClick={(e) => handleClick(e, link.href)}
-                className={`nav-link px-4 py-2 rounded-lg text-[0.82rem] font-medium tracking-wide transition-all ${
-                  activeSection === link.href.substring(1)
-                    ? 'text-indigo-600 bg-indigo-50/60'
-                    : 'text-slate-500 hover:text-indigo-600 hover:bg-indigo-50/40'
-                }`}>
-                {link.name}
-              </a>
-            ))}
+      <div className="flex items-center justify-between">
+        <a href="#home" onClick={(e) => handleClick(e, '#home')}
+          className="flex items-center gap-3 text-xl font-black font-['Space_Grotesk'] group">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)] group-hover:scale-110 transition-transform duration-300">
+            <HiSparkles className="text-white text-lg" />
           </div>
+          <span className="text-white tracking-wide group-hover:text-indigo-300 transition-colors">Kamruzzaman</span>
+        </a>
 
-          <button className="md:hidden p-2 rounded-xl text-slate-600 hover:bg-indigo-50 transition-all"
-            onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-            {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
-          </button>
+        <div className="hidden md:flex items-center gap-2">
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href}
+              onClick={(e) => handleClick(e, link.href)}
+              className="relative px-5 py-2.5 rounded-xl text-sm font-bold tracking-wide transition-colors text-slate-300 hover:text-white group">
+              {activeSection === link.href.substring(1) && (
+                <motion.div 
+                  layoutId="activeNavIndicator"
+                  className="absolute inset-0 bg-white/10 border border-white/20 rounded-xl shadow-inner mix-blend-screen"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">{link.name}</span>
+            </a>
+          ))}
         </div>
 
-        <div className={`md:hidden transition-all duration-400 ease-out ${
-          isOpen ? 'max-h-[28rem] opacity-100 mt-4' : 'max-h-0 opacity-0 overflow-hidden'
-        }`}>
-          <div className="glass-card rounded-2xl p-3 space-y-0.5 shadow-xl">
-            {navLinks.map((link) => (
-              <a key={link.name} href={link.href}
-                onClick={(e) => handleClick(e, link.href)}
-                className={`block py-3 px-4 rounded-xl text-sm font-medium transition-all ${
-                  activeSection === link.href.substring(1)
-                    ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-200'
-                    : 'text-slate-600 hover:bg-indigo-50'
-                }`}>
-                {link.name}
-              </a>
-            ))}
-          </div>
-        </div>
+        <button className="md:hidden p-2.5 rounded-xl text-slate-300 hover:bg-white/10 hover:text-white transition-all border border-transparent hover:border-white/20"
+          onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+          {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+        </button>
       </div>
-    </nav>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0, y: -20 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden origin-top"
+          >
+            <div className="glass-card mt-4 rounded-2xl p-4 space-y-2 shadow-2xl border border-white/10">
+              {navLinks.map((link) => (
+                <a key={link.name} href={link.href}
+                  onClick={(e) => handleClick(e, link.href)}
+                  className={`block py-3.5 px-5 rounded-xl text-sm font-bold transition-all ${
+                    activeSection === link.href.substring(1)
+                      ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 shadow-inner'
+                      : 'text-slate-400 hover:bg-white/10 hover:text-white'
+                  }`}>
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 

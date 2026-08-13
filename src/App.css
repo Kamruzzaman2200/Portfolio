@@ -63,16 +63,31 @@
 
 /* Glass morphism */
 .glass {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(9, 9, 11, 0.6);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 /* Section padding */
@@ -90,21 +105,23 @@
   gap: 0.5rem;
   padding: 0.5rem 1.25rem;
   border-radius: 100px;
-  background: linear-gradient(135deg, #eef2ff, #f5f3ff);
-  border: 1px solid #e0e7ff;
-  color: #6366f1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a5b4fc;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 1rem;
+  backdrop-filter: blur(10px);
 }
 
 .section-title {
   font-size: 2.25rem;
-  font-weight: 700;
-  color: #0f172a;
+  font-weight: 800;
+  color: #f8fafc;
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 @media (min-width: 640px) {
   .section-title { font-size: 2.75rem; }
@@ -120,12 +137,12 @@
 
 /* Card hover */
 .card-lift {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .card-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px -15px rgba(99, 102, 241, 0.2),
-              0 10px 30px -10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border-color: #cbd5e1;
 }
 
 /* Button gradient */
@@ -239,32 +256,39 @@
 
 /* Mesh gradient backgrounds */
 .mesh-gradient-1 {
-  background-color: #ffffff;
-  background-image:
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.06) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.06) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.04) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(59, 130, 246, 0.04) 0px, transparent 50%);
+  background-color: transparent;
 }
 
 .mesh-gradient-2 {
-  background-color: #fafbff;
-  background-image:
-    radial-gradient(at 20% 80%, rgba(99, 102, 241, 0.07) 0px, transparent 50%),
-    radial-gradient(at 80% 20%, rgba(168, 85, 247, 0.05) 0px, transparent 50%);
+  background-color: transparent;
 }
 
 /* Stat card */
 .stat-card {
-  background: white;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
   padding: 2rem 1.5rem;
   text-align: center;
-  border: 1px solid #f1f5f9;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 .stat-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px -15px rgba(99, 102, 241, 0.18);
-  border-color: #e0e7ff;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -5px rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
 }
